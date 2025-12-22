@@ -189,20 +189,22 @@ The transcript tool **needs a direct YouTube URL or video ID**, not a search que
 2. Copy the video URL from your browser
 3. Paste it into your message: `"Explain this: [URL]"`
 
-### Current Limitations vs. Claude Code
+### The Limitation I Found
 
-Claude Code (web version) has **web search capability**, so it can answer "find a video about...". 
+I discovered that **direct YouTube URLs work, but searching by title doesn't**. The transcript tool can only extract transcripts from direct video links—it can't search YouTube like Claude Code does.
 
-Your local version uses only **direct transcript fetching**. This keeps it simple and fast, but means:
-- ✅ You need to provide direct YouTube URLs
-- ❌ The AI cannot search for videos automatically
+When I tried asking the AI to find a video by title, it attempted to use the tool with just text, which failed. But when I gave it a direct link, it worked perfectly.
 
-**Future Enhancement:** Web search capability could be added using:
-- DuckDuckGo API (free, no key required)
-- Bing Web Search API
-- Custom YouTube search tool
+### Why This Happens
 
-For now, we keep it focused on **direct transcript analysis** rather than search.
+Claude Code (web version) has built-in web search, so it can find videos automatically. This local version is simpler—it focuses on analyzing transcripts from direct links, not searching.
+
+**Could this be improved?** Yes. I could add:
+- DuckDuckGo API for searching
+- Bing Web Search API  
+- Custom YouTube search integration
+
+But for now, keeping it focused on direct transcript analysis keeps things fast and simple.
 
 ---
 
@@ -251,4 +253,3 @@ This project is open source. Check the LICENSE file for details.
 
 ---
 
-**Questions?** Create an issue on GitHub or ask in the discussions. The community is here to help! 🚀
