@@ -11,11 +11,11 @@ A **universal AI tutor** that explains complex technical concepts (AI, ML, and b
 **Original Project**: [ShawinT/ai-tutor-skill](https://github.com/ShawinT/ai-tutor-skill)
 
 **What's New in This Fork:**
-- ✅ Fixed YouTube transcript token overflow (smart 10k char truncation)
+- ✅ Fixed YouTube transcript token overflow for Groq's 6k TPM limit (smart 10k char truncation)
 - ✅ Added multi-turn conversation loop (ask multiple questions)
 - ✅ Better error handling for transcript failures
 - ✅ Works with **any LLM** (Groq, OpenAI, Anthropic, etc.)
-- ✅ Beginner-friendly README with clear contribution steps
+- ✅ Beginner-friendly README with clear documentation
 
 ---
 
@@ -194,6 +194,8 @@ The transcript tool **needs a direct YouTube URL or video ID**, not a search que
 I discovered that **direct YouTube URLs work, but searching by title doesn't**. The transcript tool can only extract transcripts from direct video links—it can't search YouTube like Claude Code does.
 
 When I tried asking the AI to find a video by title, it attempted to use the tool with just text, which failed. But when I gave it a direct link, it worked perfectly.
+
+**Note on Token Limits:** The transcript truncation (10k chars) is specifically for Groq's on-demand tier which has a 6,000 tokens per minute limit. If you switch to OpenAI or other APIs with higher limits, you can remove or increase this limit in `chat.py`.
 
 ### Why This Happens
 
