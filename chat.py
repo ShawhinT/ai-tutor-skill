@@ -65,8 +65,8 @@ RULES:
 
         response = client.chat.completions.create(
             model="meta-llama/llama-4-maverick-17b-128e-instruct",
-            messages=messages,
-            tools=[YOUTUBE_TOOL],
+            messages=messages, # type: ignore
+            tools=[YOUTUBE_TOOL], # type: ignore
             tool_choice="auto"
         )
 
@@ -92,7 +92,7 @@ RULES:
                         transcript_text = f"Error fetching transcript: {str(e)}"
 
                     # Send tool result back
-                    messages.append(msg)
+                    messages.append(msg) # type: ignore
                     messages.append({
                         "role": "tool",
                         "tool_call_id": call.id,
@@ -101,15 +101,15 @@ RULES:
 
                     final = client.chat.completions.create(
                         model="meta-llama/llama-4-maverick-17b-128e-instruct",
-                        messages=messages
+                        messages=messages # type: ignore
                     )
                     
                     ai_response = final.choices[0].message.content
                     print("\nAI >", ai_response, "\n")
-                    messages.append({"role": "assistant", "content": ai_response})
+                    messages.append({"role": "assistant", "content": ai_response}) # type: ignore
         else:
             print("\nAI >", msg.content, "\n")
-            messages.append({"role": "assistant", "content": msg.content})
+            messages.append({"role": "assistant", "content": msg.content}) # type: ignore
 
 if __name__ == "__main__":
     chat()

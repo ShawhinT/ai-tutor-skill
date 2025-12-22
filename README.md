@@ -150,7 +150,63 @@ ai-tutor-skill/
 
 ---
 
-## 🛠️ Advanced: Use Different LLMs
+## � How to Use YouTube Videos
+
+### ✅ What Works (Direct URL)
+```
+You > explain this youtube video? https://youtu.be/RveLjcNl0ds?si=PbLLM-_kND9Fifq5
+🔍 Fetching transcript for: https://youtu.be/RveLjcNl0ds?si=PbLLM-_kND9Fifq5...
+
+AI > The YouTube video by Shaw Talebi discusses the recent advancements in reasoning models trained through reinforcement learning, particularly focusing on OpenAI's o1 model and DeepSeek's R1 model. Here's a breakdown of the key points:
+
+## Background
+1. OpenAI released the o1 model in September 2024, which demonstrated advanced reasoning capabilities through large-scale reinforcement learning.
+2. The o1 model introduced a novel approach called "test-time compute scaling," where the model's performance improves with the number of tokens it generates during inference.
+
+## Key Insights
+- The o1 model's responses include a "thinking" phase before providing the final answer
+- Performance improves as it generates more tokens ("test-time compute scaling")
+- OpenAI used special "thinking tokens" to delimit the model's chain of thought
+
+[...AI provides full explanation...]
+```
+
+### ❌ What Doesn't Work (Video Title/Search)
+```
+You > find a youtube video by shaw talebi on this and explain it. it might be called how to train LLMs to think?
+🔍 Fetching transcript for: shaw talebi how to train LLMs to think...
+
+AI > It seems the video wasn't found directly. Let's try a more specific search.
+
+[Error: get_youtube_transcript failed. Please provide a valid YouTube video URL or ID...]
+```
+
+### Why?
+The transcript tool **needs a direct YouTube URL or video ID**, not a search query. It cannot search YouTube.
+
+**How to fix it:**
+1. Search YouTube for the video title
+2. Copy the video URL from your browser
+3. Paste it into your message: `"Explain this: [URL]"`
+
+### Current Limitations vs. Claude Code
+
+Claude Code (web version) has **web search capability**, so it can answer "find a video about...". 
+
+Your local version uses only **direct transcript fetching**. This keeps it simple and fast, but means:
+- ✅ You need to provide direct YouTube URLs
+- ❌ The AI cannot search for videos automatically
+
+**Future Enhancement:** Web search capability could be added using:
+- DuckDuckGo API (free, no key required)
+- Bing Web Search API
+- Custom YouTube search tool
+
+For now, we keep it focused on **direct transcript analysis** rather than search.
+
+---
+
+## �🛠️ Advanced: Use Different LLMs
 
 This project works with **any LLM**, not just Groq:
 
@@ -176,29 +232,13 @@ OPENAI_API_KEY=your_key_here
 2. Similar changes to `chat.py` with Anthropic client
 3. Update `.env` with `ANTHROPIC_API_KEY`
 
----
-
-## ❓ FAQ
-
-**Q: I'm scared I'll break something**
-A: You won't! GitHub has full version history. Worst case, your PR gets rejected and that's fine—you learn something.
-
-**Q: Do I need permission to contribute?**
-A: Nope! That's the beauty of open source. Fork → Change → PR = Contribute.
-
-**Q: What if my PR isn't accepted?**
-A: Totally normal. Ask why, learn from feedback, try again. Every contributor has been rejected before!
-
-**Q: Can I contribute if I don't code much?**
-A: YES! You can improve docs, add examples, fix typos, etc. All valuable!
-
-**Q: How long does PR review take?**
-A: Could be hours, days, or weeks. Maintainers volunteer their time.
-
----
 
 ## 📖 Resources
 
+**Inspiration & Learning:**
+- [Claude Skills Explained (23 min)](https://youtu.be/vEvytl7wrGM) - by Shaw Talebi - **This project is an improved, production-ready version implementing the concepts from this video!**
+
+**Development & Contributing:**
 - [Git/GitHub Guide](https://docs.github.com/en/get-started)
 - [How to Make Your First Pull Request](https://www.freecodecamp.org/news/how-to-make-your-first-pull-request-on-github/)
 - [Open Source 101](https://opensource.guide/)
