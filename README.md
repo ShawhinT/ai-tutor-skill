@@ -1,5 +1,7 @@
 # ai-tutor-skill
 
+[![Deploy on MindPal](https://mindpal.space/badges/deploy-on-mindpal.svg)](https://mindpal.space/skills/ai-tutor?utm_source=github&utm_medium=readme_button)
+
 A Claude skill for explaining complex AI and ML concepts in accessible, plain English. This skill transforms abstract technical ideas into clear explanations using structured narrative frameworks, making it ideal for teaching and learning technical topics.
 
 Resources:
